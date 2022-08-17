@@ -1,0 +1,8 @@
+import random
+#Who will pay
+input("Who will pay?")
+Name=['Toon','Tin','Pook']
+Num_name=len(Name)
+random_name=random.randint(0,Num_name-1)
+Who_pay=Name[random_name]
+print(Who_pay)
