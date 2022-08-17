@@ -1,0 +1,26 @@
+import random
+
+word_list=['joker','ikaris','anakin']
+Choose_word=random.choice(word_list)
+if Choose_word =='joker':
+    print('Hint: the character in DC, He is villain')
+elif Choose_word=='ikaris':
+    print ('Hint: the character in Marvel,He can fly')
+else:
+    print("Hint: I'm your father")
+lenword=len(Choose_word)
+display=[]
+for _ in range(lenword):
+    display += "_"
+print (display)
+end_game=False
+while not end_game:
+    guess=input('Please guess your letter:').lower()
+    for position in range(lenword):
+        letter=Choose_word[position]
+        if letter == guess:
+            display[position]=letter
+    print(display)
+    if "_" not in display:
+        end_game=True
+        print('You Win!!')
