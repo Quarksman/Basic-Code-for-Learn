@@ -1,0 +1,65 @@
+G1='hello\nworld'
+G2='hello\tworld'
+
+my_string='hello world'
+G3=my_string[1:5:2]
+
+pie=22/7
+print('pie value is {x:1.3f}'.format(x=pie))
+print(f'pie value is {pie:1.3f}')
+
+my_list=[5,4,3,2,1,0]
+print(f'1.{my_list}')
+
+my_list.sort()
+print(f'2.{my_list}')
+
+my_list[0]='ok'
+print(f'3.{my_list}')
+
+my_list.append(6)
+print(f'4.{my_list}')
+
+my_list.pop(2)
+print(f'5.{my_list}')
+
+Dict={'apple':10,'banana':15,'orange':20}
+DictX=Dict['apple']
+print(f'6.{DictX}')
+
+Dict['apple']=40
+print(f'7.{Dict}')
+
+G3=Dict.items()
+print(f'8.{G3}')
+
+G4=Dict.keys()
+print(f'9.{G4}')
+
+G5=Dict.values()
+print(f'9.{G5}')
+
+G6=list(range(0,10,2))
+print(f'10.{G6}')
+
+t=[1,2,3,4,5]
+s=[5,6,7,8,9]
+for x in zip(t,s):
+    print (x)
+
+G7='a' in 'world'
+print(f'11.{G7}')
+
+c=[x*2 for x in t]
+print(c)
+
+x_list=[1,2,3,4,5]
+def numx(x):
+    return x*3
+y=list(map(numx,x_list))
+print(y)
+
+def numy(y):
+    return y/2==1
+z=list(filter(numy,x_list))
+print(z)
