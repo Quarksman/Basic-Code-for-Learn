@@ -1,0 +1,94 @@
+#Basic module
+
+from random import shuffle
+text=[3,4,5,6,7]
+shuffle(text)
+print(f'12.{text}') #change everytime
+
+from random import randint
+print(randint(0,100)) #change everytime
+
+from collections import Counter
+mylist=[1,1,1,1,1,2,2,2,3,3,2,2,4,4,4,4,1,1,5,5,5,5,]
+C1=Counter(mylist)
+print(C1)
+C2=C1.most_common(2)
+print(C2)
+
+from collections import namedtuple
+myson=namedtuple('bio',['name','age','hobby'])
+son=myson(name='Tin',age=7,hobby='Game')
+print(son)
+print(son.hobby)
+print(son.name)
+
+import datetime
+mytime=datetime.time(12,30)
+print(mytime)
+print(mytime.hour)
+print(mytime.minute)
+
+D1=datetime.date.today()
+print(D1)
+D2=D1.ctime()
+print(D2)
+
+from datetime import  datetime
+D3=datetime(2021,11,2,2,2,2)
+print(D3)
+D4=D3.today()
+print(D4)
+
+D5=datetime(2021,11,2)
+D6=datetime(2021,12,12)
+D7=D6-D5
+print(D7)
+
+import math
+#help(math) show math help
+
+import random
+DD=[1,2,3,4,5,6,7,8,9]
+DD1=random.choice(DD)
+print(DD1)
+DD2=random.choices(population=DD,k=5) #sampling replacment
+print(DD2)
+DD3=random.sample(population=DD,k=5) #sampling without replacment
+print(DD3)
+DD4=random.gauss(mu=0,sigma=2)
+print(DD4)
+
+import re
+phone='please write phone no. and copy that'
+x='phone'
+R=re.search(x,phone)
+print(R)
+R1=re.search(x,phone).end()
+print(R1)
+R2=re.findall(x,phone)
+print(R2)
+
+
+#Character identifiers
+#\d   digit             file_\d\d        file_25
+#\w   alphanumeric      \w-\w\w\w\w      A-b_1
+#\s   White space       a\sb\sc          a b c
+#\D   A non digit       \D\D\D           ABC
+#\W   Non-alphanumeric  \W\W\W\W         *-+)
+#\S   Non-whitespace    \S\S\S\S         Yoyo
+
+#Quantifiers
+#+       Occurs one or more time          version\W-\W+        version A-b1_1
+# {3}    Occurs exactly 3  times          \D{3}                abc
+# {2,4}  Occurs 2 to 4 times              \d{2,4}              123
+#{3,}    Occurs 3 or more                 \w{3,}               anycharacters
+#*       Occurs zero or more times        ABC*                 AAACC
+#?       Once or none                     pluras?              plural
+
+pho='my phone number is 083-6160124'
+phone=re.search(r'\d{3}-\d{4}',pho)
+phone1=phone.group()
+phone2=re.findall(r'...ne',pho)
+print(phone)
+print(phone1)
+print(phone2)
