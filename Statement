@@ -1,0 +1,177 @@
+mylist=[1,2,3,4,5]
+for x in mylist:
+    print(x)
+
+for x in mylist:
+    print('ok')
+
+for x in mylist:
+    y=3
+    x=x*y
+    print(x)
+
+x=0
+while x<6:
+    x=x+1
+    print(x)
+
+for x in mylist:
+    x=x+1
+    if x>6:
+        break #pass, continue
+    print(x)
+
+#Function
+
+def add(x,y):
+    result=x+y
+    print(result)
+add(5,6)
+
+def numx(x):
+    return x*100     #return case
+x=numx(5)
+print(x)
+
+
+
+def func(num):
+    if num<10:
+        print(num+10)
+    elif num>10:
+        print('it high number')
+    else:
+        print('again')
+func(12)
+
+
+def Cpk(ucl,lsl,x,s):
+    Upper=(ucl-x)/(3*s)
+    Lower=(x-lsl)/(3*s)
+    value=min(Upper,Lower)
+    if value <=0.67:
+        print('rank D')
+    elif value <=1.00 and value > 0.67:
+        print('rank C')
+    elif value <=1.33 and value > 1.00:
+        print ('rank B')
+    elif value <=1.67 and value >1.33:
+        print ('rank A')
+    else:
+        print ('rank S')
+    result=['Cpk ={x:3.3f}'.format(x=value)]
+    print(result)
+
+Cpk(6,1,3.5,0.5)
+
+short=lambda x:x*100 #very good syntax for short function
+print(short(5))
+
+class my_son():
+    def __init__(self,name,hobby):
+        self.name=name
+        self.hobby=hobby
+    def say(self):
+        print('I love sonic and mario')
+
+my_baby=my_son(name='austion',hobby='nintendo game')
+print(my_baby.hobby)
+print(my_baby.name)
+my_baby.say()
+
+class squre():
+    def __init__(self,width,length):
+        self.width=width
+        self.length=length
+    def square_area(self):
+        return self.width*self.length
+
+sq=squre(width=20,length=50)
+print(sq.length,sq.width)
+print(sq.square_area())
+
+#OOP Object Orient Program, Please study on http://www.educative.io/blog/how-to-use-oop-in-python
+
+
+class Notebook:
+    def __init__(self,ram,memory,chip,screen):
+        self.ram=ram
+        self.memory=memory
+        self.chip=chip
+        self.screen=screen
+    def notebookInFo():
+        return f"The Notebook is electronic things. Notebook have 'ram'" \
+               f"'memory','chip' and 'screen'"
+
+class Mac(Notebook): #child class
+    def __init__(self,ram,memory,chip,screen,brand,OS):
+        self.__OS=OS #Encapsulaton private member, can't call by Mac.OS
+        self.brand=brand
+        super().__init__(ram,memory,chip,screen) #super call parent notebook class
+    def __str__(self):                           #and inheritance use attribue from parent class
+        return f'{self.brand} spec. ram:{self.ram},memory:{self.memory},' \
+               f'chipset:{self.chip},screen:{self.screen}'
+
+class HP(Notebook):
+    def __init__(self,ram,memory,chip,screen,brand,OS):
+        self.__OS=OS
+        self.brand=brand
+        super().__init__(ram,memory,chip,screen)
+    def __str__(self):
+        return f'{self.brand} spec. ram:{self.ram},memory:{self.memory},' \
+               f'chipset:{self.chip},screen:{self.screen}'
+
+N=Notebook
+H=HP(brand='HP',ram='128',memory='HHD',chip='intel',screen='normal',OS='Window')
+M=Mac(brand='Mac',ram='128',memory='SSD',chip='M1',screen='touch',OS='apple')
+print(N.notebookInFo())
+print(H)
+print(M)
+
+class family:
+    def __init__(self,love,respect):
+        self._love=love
+        self._respect=respect
+    def __str__(self):
+        return f'WE re Toon, Pook, Tin family, We love {self._love} and respect {self._respect}'
+
+class Austin(family):
+    def __init__(self,name,like,love,respect):
+        super().__init__(love,respect)
+        self.name=name
+        self.like=like
+    def __str__(self):
+        return f"I'm {self.name}. I like {self.like} I love my family {self._love} " \
+               f"and I respect my mom and dad {self._respect}"
+
+
+
+class ProcessCAP:
+    def __init__(self,USL,LSL):
+        self._USL=USL
+        self._LSL=LSL
+
+class Cp(ProcessCAP):
+    def __init__(self,sigma,USL,LSL):
+        super().__init__(USL,LSL)
+        self._sigma=sigma
+    def Cp(self):
+        Value=(self._USL-self._LSL)/(6*self._sigma)
+        return f'Cp={Value:1.3f}'
+
+class Cpk(Cp):
+    def __init__(self,sigma,USL,LSL,x_bar):
+        super().__init__(USL,LSL,sigma)
+        self.x_bar=x_bar
+    def Cpk(self):
+        Cpu=abs((self._USL-self.x_bar)/(3*self._sigma))
+        Cpl=abs((self.x_bar-self._LSL)/(3*self._sigma))
+        Cpkvalue=min(Cpu,Cpl)
+        return f'Cpk={Cpkvalue:1.3f}'
+
+A=Austin(name='Austin',like='Sonic',respect='everytime',love='very much')
+print(A)
+CP=Cp(sigma=1,USL=6,LSL=1)
+print(CP.Cp())
+CPK=Cpk(x_bar=5,sigma=1,LSL=1,USL=7)
+print(CPK.Cpk())
