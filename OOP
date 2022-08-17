@@ -1,0 +1,82 @@
+class Notebook:
+    def __init__(self,ram,memory,chip,screen):
+        self.ram=ram
+        self.memory=memory
+        self.chip=chip
+        self.screen=screen
+    def notebookInFo():
+        return f"The Notebook is electronic things. Notebook have 'ram'" \
+               f"'memory','chip' and 'screen'"
+
+class Mac(Notebook):
+    def __init__(self,ram,memory,chip,screen,brand,OS):
+        self.__OS=OS
+        self.brand=brand
+        super().__init__(ram,memory,chip,screen)
+    def __str__(self):
+        return f'{self.brand} spec. ram:{self.ram},memory:{self.memory},' \
+               f'chipset:{self.chip},screen:{self.screen}'
+
+class HP(Notebook):
+    def __init__(self,ram,memory,chip,screen,brand,OS):
+        self.__OS=OS
+        self.brand=brand
+        super().__init__(ram,memory,chip,screen)
+    def __str__(self):
+        return f'{self.brand} spec. ram:{self.ram},memory:{self.memory},' \
+               f'chipset:{self.chip},screen:{self.screen}'
+
+N=Notebook
+H=HP(brand='HP',ram='128',memory='HHD',chip='intel',screen='normal',OS='Window')
+M=Mac(brand='Mac',ram='128',memory='SSD',chip='M1',screen='touch',OS='apple')
+print(N.notebookInFo())
+print(H)
+print(M)
+
+class family:
+    def __init__(self,love,respect):
+        self._love=love
+        self._respect=respect
+    def __str__(self):
+        return f'WE re Toon, Pook, Tin family, We love {self._love} and respect {self._respect}'
+
+class Austin(family):
+    def __init__(self,name,like,love,respect):
+        super().__init__(love,respect)
+        self.name=name
+        self.like=like
+    def __str__(self):
+        return f"I'm {self.name}. I like {self.like} I love my family {self._love} " \
+               f"and I respect my mom and dad {self._respect}"
+
+
+
+class ProcessCAP:
+    def __init__(self,USL,LSL):
+        self._USL=USL
+        self._LSL=LSL
+
+class Cp(ProcessCAP):
+    def __init__(self,sigma,USL,LSL):
+        super().__init__(USL,LSL)
+        self._sigma=sigma
+    def Cp(self):
+        Value=(self._USL-self._LSL)/(6*self._sigma)
+        return f'Cp={Value:1.3f}'
+
+class Cpk(Cp):
+    def __init__(self,sigma,USL,LSL,x_bar):
+        super().__init__(USL,LSL,sigma)
+        self.x_bar=x_bar
+    def Cpk(self):
+        Cpu=abs((self._USL-self.x_bar)/(3*self._sigma))
+        Cpl=abs((self.x_bar-self._LSL)/(3*self._sigma))
+        Cpkvalue=min(Cpu,Cpl)
+        return f'Cpk={Cpkvalue:1.3f}'
+
+A=Austin(name='Austin',like='Sonic',respect='everytime',love='very much')
+print(A)
+CP=Cp(sigma=1,USL=6,LSL=1)
+print(CP.Cp())
+CPK=Cpk(x_bar=5,sigma=1,LSL=1,USL=7)
+print(CPK.Cpk())
